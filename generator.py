@@ -2,7 +2,6 @@ import random
 import re
 
 date = input("Podaj datę urodzenia w formacie: dd.mm.rrrr: ")
-
 gender_choice = input("Podaj płeć M/K: ")
 
 pattern = r"^([0-2][\d]|[3][0-1])\.(1[0-2]|0[\d])\.([1-2][09][\d]{2})$"
@@ -15,26 +14,20 @@ else:
     quit()
 
 
-intmatch3 = int(match.group(3))
-
-
 def year():
-    if intmatch3 >= 1900 and intmatch3 <= 1999:
-        return '%02d' % (intmatch3-1900)
-    elif intmatch3 >= 2000 and intmatch3 <= 2009:
-        return '%02d' % (intmatch3-2000)
+    if 1900 <= int(match.group(3)) <= 1999:
+        return '%02d' % (int(match.group(3))-1900)
+    elif 2000 <= int(match.group(3)) <= 2009:
+        return '%02d' % (int(match.group(3))-2000)
     else:
-        return '%02d' % (intmatch3 - 2000)
-
-
-intmatch2 = int(match.group(2))
+        return '%02d' % (int(match.group(3)) - 2000)
 
 
 def month():
-    if intmatch3 >= 1900 and intmatch3 <= 1999:
-        return '%02d' % intmatch2
+    if 1900 <= int(match.group(3)) <= 1999:
+        return '%02d' % int(match.group(2))
     else:
-        return '%02d' % (intmatch2+20)
+        return '%02d' % (int(match.group(2))+20)
 
 
 def day():
